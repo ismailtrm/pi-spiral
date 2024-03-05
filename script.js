@@ -48,8 +48,9 @@ piDigitsSlider.addEventListener("input", function() {
     const piValue = calculatePi(digits);
     
     // Display the calculated value of pi
-    document.getElementById("piValue").textContent = piValue;
+    document.getElementById("piValue").textContent = piValue.toString().substr(0, digits + 2); // Display pi up to the selected number of digits
 });
+
 
 // Function to draw the spiral
 function drawSpiral() {
