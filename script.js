@@ -18,6 +18,7 @@ let angle = 0;
 const multiplierSlider = document.getElementById("multiplier");
 const iterationsSlider = document.getElementById("iterations");
 const speedSlider = document.getElementById("speed");
+const piDigitsSlider = document.getElementById("piDigits");
 
 // Update animation variables when sliders change
 multiplierSlider.addEventListener("input", function() {
@@ -32,6 +33,18 @@ iterationsSlider.addEventListener("input", function() {
 
 speedSlider.addEventListener("input", function() {
     speed = parseFloat(speedSlider.value);
+});
+
+// Add event listener for piDigits slider
+piDigitsSlider.addEventListener("input", function() {
+    // Get the selected number of digits
+    const digits = parseInt(piDigitsSlider.value);
+    
+    // Calculate pi with the selected number of digits
+    const piValue = calculatePi(digits);
+    
+    // Display the calculated value of pi
+    document.getElementById("piValue").textContent = piValue;
 });
 
 // Function to draw the spiral
@@ -82,3 +95,8 @@ document.getElementById("download-btn").addEventListener("click", function() {
     downloadLink.setAttribute("href", canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
     downloadLink.click();
 });
+
+// Function to calculate pi with the specified number of digits
+function calculatePi(digits) {
+    return parseFloat(Math.PI.toFixed(digits));
+}
