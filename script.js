@@ -1,6 +1,10 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+// Set canvas size
+canvas.width = 2000; // Larger canvas size
+canvas.height = 2000;
+
 // Dark gray background
 ctx.fillStyle = "#333";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
