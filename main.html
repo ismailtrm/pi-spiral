@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Spiral</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #333; /* Dark gray background */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #canvas-container {
+            width: 80%; /* Adjust width as needed */
+            max-width: 800px; /* Max width for larger screens */
+            height: 50%; /* Adjust height as needed */
+            max-height: 800px; /* Max height for larger screens */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .control-container {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .control {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .control-label {
+            margin-right: 10px;
+        }
+
+        input[type="range"] {
+            width: 200px;
+            -webkit-appearance: none;
+            background-color: transparent;
+            margin: 0 10px;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 3px;
+            cursor: pointer;
+            animate: 0.2s;
+            background: #ddd;
+            border-radius: 1.3px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            border: 1px solid #ddd;
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -6px;
+        }
+
+        input[type="range"]:focus::-webkit-slider-runnable-track {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="canvas" width="1920" height="1080"></canvas>
+    </div>
+
+    <div class="control-container">
+        <div class="control">
+            <label class="control-label" for="multiplier">Multiplier:</label>
+            <input type="range" id="multiplier" min="5" max="50" value="20">
+        </div>
+        <div class="control">
+            <label class="control-label" for="iterations">Iterations:</label>
+            <input type="range" id="iterations" min="500" max="5000" value="2000" step="500">
+        </div>
+        <div class="control">
+            <label class="control-label" for="speed">Rotation Speed:</label>
+            <input type="range" id="speed" min="0" max="10" value="5" step="0.1">
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Dark gray background
+        ctx.fillStyle = "#333";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Red tone color palette
+        const redTones = ["#FF0000", "#FF3333", "#FF6666", "#FF9999", "#FFCCCC", "#FF6666", "#FF3333", "#FF0000"];
+
+        // Get slider elements
+        const multiplierSlider = document.getElementById("multiplier");
+        const iterationsSlider = document.getElementById("iterations");
+        const speedSlider = document.getElementById("speed");
+
+        // Digits of pi
+        const piDigits = "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
+
+        // Animation variables
+        let multiplier = parseFloat(multiplierSlider.value);
+        let numIterations = parseInt(iterationsSlider.value);
+        let speed = parseFloat(speedSlider.value);
+        let angle = 0;
+
+        // Update animation variables when sliders change
+        multiplierSlider.addEventListener("input", function() {
+            multiplier = parseFloat(multiplierSlider.value);
+            drawSpiral();
+        });
+
+        iterationsSlider.addEventListener("input", function() {
+            numIterations = parseInt(iterationsSlider.value);
+            drawSpiral();
+        });
+
+        speedSlider.addEventListener("input", function() {
+            speed = parseFloat(speedSlider.value);
+        });
+
+        // Function to draw the spiral
+        function drawSpiral() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#333";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Begin a single path for the spiral
+            ctx.beginPath();
+
+            // Draw the spiral
+            for (let i = 0; i < numIterations; i++) {
+                const radius = parseFloat(piDigits[i % piDigits.length]) * multiplier;
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle);
+
+                // Move pen to starting point for each segment
+                if (i === 0) {
+                    ctx.moveTo(x + canvas.width / 2, y + canvas.height / 2);
+                } else {
+                    ctx.lineTo(x + canvas.width / 2, y + canvas.height / 2);
+                }
+                
+                // Set stroke style based on color palette
+                ctx.strokeStyle = redTones[i % redTones.length];
+                ctx.stroke();
+
+                angle += speed * Math.PI / 180; // Convert speed to radians
+            }
+        }
+
+        // Initial draw
+        drawSpiral();
+    </script>
+</body>
+</html>
