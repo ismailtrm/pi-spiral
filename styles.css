@@ -9,12 +9,20 @@ body {
     background-color: #333; /* Dark gray background */
     color: white;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Prevent horizontal scroll */
+}
+
+.canvas-container {
+    width: 80vw;
+    height: 80vh;
+    max-width: 600px;
+    max-height: 600px;
+    overflow: hidden;
 }
 
 canvas {
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated; /* Prevent canvas pixelation */
 }
 
 .control-container {
@@ -22,11 +30,6 @@ canvas {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-canvas {
-    width: 100%;
-    height: 100%;
-    image-rendering: pixelated; /* Prevent canvas pixelation */
 }
 
 .control {
@@ -40,7 +43,7 @@ canvas {
     flex: 1; /* Use remaining space */
 }
 
-input[type="range"] {
+.slider {
     flex: 2; /* Use majority of the space */
     -webkit-appearance: none;
     background-color: transparent;
@@ -48,8 +51,53 @@ input[type="range"] {
     width: 100%;
 }
 
-#download-btn {
-    margin-top: 20px;
+.slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #ddd;
+    border-radius: 1.3px;
+}
+
+.slider::-webkit-slider-thumb {
+    border: 1px solid #ddd;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+}
+
+.slider::-moz-range-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    background: #ddd;
+    border-radius: 1.3px;
+}
+
+.slider::-moz-range-thumb {
+    border: 1px solid #ddd;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+}
+
+.slider:focus {
+    outline: none;
+}
+
+#piValue {
+    flex: 1; /* Use remaining space */
+}
+
+#color-palette-btn {
+    margin-top: 10px;
     padding: 10px 20px;
     background-color: #FF0000;
     color: white;
@@ -57,10 +105,5 @@ input[type="range"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 90%;
-    max-width: 200px; /* Adjust max-width as needed */
 }
 
-#piValue {
-    flex: 1; /* Use remaining space */
-}
