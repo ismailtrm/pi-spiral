@@ -105,3 +105,29 @@ document.getElementById("download-btn").addEventListener("click", function() {
 function calculatePi(digits) {
     return parseFloat(Math.PI.toFixed(digits));
 }
+
+// Add color palette button functionality
+document.getElementById("color-palette-btn").addEventListener("click", function() {
+    // Generate a random color palette
+    const randomColors = generateRandomPalette();
+    
+    // Update the stroke colors of the spiral with the random color palette
+    for (let i = 0; i < randomColors.length; i++) {
+        redTones[i] = randomColors[i];
+    }
+    
+    // Redraw the spiral with the updated color palette
+    drawSpiral();
+});
+
+// Function to generate a random color palette
+function generateRandomPalette() {
+    const paletteSize = 8; // Number of colors in the palette
+    const randomPalette = [];
+    for (let i = 0; i < paletteSize; i++) {
+        const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16); // Generate a random hex color
+        randomPalette.push(randomColor);
+    }
+    return randomPalette;
+}
+
