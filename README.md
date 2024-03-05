@@ -18,7 +18,7 @@ This project creates a colorful spiral based on the digits of the mathematical c
 2. Adjust the sliders to customize the spiral.
 3. Click the "Download Image" button to save the spiral as a PNG image.
 
-## English
+## Türkçe
 
 Bu proje, matematiksel sabit Pi (π) rakamlarına dayalı renkli bir spirali oluşturur. Spiral, JavaScript kullanılarak HTML canvas öğesinde çizilir. Kullanıcılar spiral görünümünü özelleştirmek için çeşitli parametreleri ayarlayabilirler, bunlar çarpıcı, iterasyon sayısı, döndürme hızı ve Pi sayısının basamak sayısıdır.
 
