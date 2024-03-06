@@ -95,9 +95,15 @@ canvas {
 #piValue {
     flex: 1; /* Use remaining space */
 }
+/* Add this CSS to your existing styles.css file */
+
+#piValue {
+    margin-left: 10px; /* Add some space between the slider and the value string */
+}
 
 #color-palette-btn {
     margin-top: 10px;
+    margin-bottom: 20px; /* Add some space below the button */
     padding: 10px 20px;
     background-color: #FF0000;
     color: white;
@@ -106,4 +112,6 @@ canvas {
     cursor: pointer;
     transition: background-color 0.3s;
 }
+
+
 
