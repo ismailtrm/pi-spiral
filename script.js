@@ -1,9 +1,17 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-
+const resolutionMultiplier = 2; // Increase this value to improve resolution
 // Set canvas size
 canvas.width = 2000; // Larger canvas size
 canvas.height = 2000;
+// Adjust canvas resolution
+// Set canvas width and height
+canvas.width = window.innerWidth * resolutionMultiplier;
+canvas.height = window.innerHeight * resolutionMultiplier;
+
+// Set canvas style width and height to maintain original size
+canvas.style.width = window.innerWidth + "px";
+canvas.style.height = window.innerHeight + "px";
 
 // Dark gray background
 ctx.fillStyle = "#333";
