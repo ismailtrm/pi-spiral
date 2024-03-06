@@ -1,6 +1,6 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-const resolutionMultiplier = 2; // Increase this value to improve resolution
+const resolutionMultiplier = 10; // Increase this value to improve resolution
 // Set canvas size
 canvas.width = 2000; // Larger canvas size
 canvas.height = 2000;
