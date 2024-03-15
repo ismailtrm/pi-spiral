@@ -6,6 +6,7 @@ https://easyimg.io/g/x5arjy7hr
 # Colorful Spiral
 
 This project creates a colorful spiral based on the digits of the mathematical constant Pi (π). The spiral is drawn on an HTML canvas element using JavaScript. Users can adjust various parameters such as the multiplier, number of iterations, rotation speed, and number of digits of Pi to customize the appearance of the spiral.
+
 It was specially prepared for pi day for the pi number themed t-shirt competition. Anyone who wants can create and download their own pi spiral and use it :))
 
 ## Features
