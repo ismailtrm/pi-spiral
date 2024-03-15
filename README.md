@@ -27,6 +27,8 @@ It was specially prepared for pi day for the pi number themed t-shirt competitio
 
 Bu proje, matematiksel sabit Pi (π) rakamlarına dayalı renkli bir spirali oluşturur. Spiral, JavaScript kullanılarak HTML canvas öğesinde çizilir. Kullanıcılar spiral görünümünü özelleştirmek için çeşitli parametreleri ayarlayabilirler, bunlar çarpıcı, iterasyon sayısı, döndürme hızı ve Pi sayısının basamak sayısıdır.
 
+Pi sayısı temalı tişört yarışması için Pi gününe özel hazırlandı. İsteyen kendi pi spiralini oluşturup indirebilir ve kullanabilir :))
+
 ## Özellikler
 
 - Ayarlanabilir parametreler:
